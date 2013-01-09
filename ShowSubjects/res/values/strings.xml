@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BunkOff</string>
+    <string name="menu_settings">Settings</string>
+    <string name="buttonAddSubject">Add Subject</string>
+    <string name="title_activity_add_subject">AddSubject</string>
+    <string name="buttonRemoveSubject">Remove Subject</string>
+    <string name="title_activity_remove_subject">RemoveSubject</string>
+    <string name="buttonShowSubjects">Show Subjects</string>
+    <string name="title_activity_show_subjects">ShowSubjects</string>
+    <string name="title_activity_add_lecture_hour">AddLectureHour</string>
+    <string name="choosetheday">Choose the day</string>
+
+    <string-array name="daysOfWeek">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+    <string name="day">Day</string>
+    <string name="time">Time</string>
+    <string name="title_activity_show_all_lectures">ShowAllLectures</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_edit_lecture_hours">EditLectureHours</string>
+    <string name="title_activity_gng_to_class_alert">GngToClassAlert</string>
+    <string name="title_activity_show_all_bunks">ShowAllBunks</string>
+    <string name="title_activity_add_bunk">AddBunk</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="about">About</string>
+    <string name="title_activity_show_subject_details">ShowSubjectDetails</string>
+    <string name="title_activity_show_subject_info">ShowSubjectInfo</string>
+    <string name="title_activity_time_pick">TimePickActivity</string>
+
+</resources>

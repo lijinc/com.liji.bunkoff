@@ -1,0 +1,94 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+     >
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".BunkIndex" >
+
+    <Button
+        android:id="@+id/addSubjectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/buttonAddSubject" 
+        android:onClick="addSubject"/>
+
+    <Button
+        android:id="@+id/removeSubjectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/addSubjectButton"
+        android:layout_alignRight="@+id/addSubjectButton"
+        android:layout_below="@+id/addSubjectButton"
+        android:layout_marginTop="10dp"
+        android:text="@string/buttonRemoveSubject" 
+        android:onClick="removeSubject"/>
+
+    <Button
+        android:id="@+id/ShowSubjects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/removeSubjectButton"
+        android:layout_alignRight="@+id/removeSubjectButton"
+        android:layout_below="@+id/removeSubjectButton"
+        android:layout_marginTop="10dp"
+		android:text="@string/buttonShowSubjects" 
+        android:onClick="showSubjects"/>
+
+    <Button
+        android:id="@+id/enableAlarmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ShowSubjects"
+        android:layout_alignRight="@+id/ShowSubjects"
+        android:layout_below="@+id/ShowSubjects"
+        android:layout_marginTop="10dp"
+        android:text="Enable Alarm" 
+        android:onClick="enableAlarm"/>
+
+    <Button
+        android:id="@+id/disableAlarmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ShowSubjects"
+        android:layout_alignRight="@+id/ShowSubjects"
+        android:layout_below="@+id/ShowSubjects"
+        android:layout_marginTop="10dp"
+        android:enabled="false"
+        android:text="Disable Alarm"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/showAllBunkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/enableAlarmButton"
+        android:layout_alignRight="@+id/enableAlarmButton"
+        android:layout_below="@+id/enableAlarmButton"
+        android:layout_marginTop="10dp"
+        android:text="Show Bunks" 
+        android:onClick="showAllBunks"/>
+
+    <Button
+        android:id="@+id/addBunkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showAllBunkButton"
+        android:layout_alignRight="@+id/showAllBunkButton"
+        android:layout_below="@+id/showAllBunkButton"
+        android:layout_marginTop="10dp"
+        android:text="Add Bunk" 
+        android:onClick="addBunk"/>
+
+</RelativeLayout>
+</ScrollView> 

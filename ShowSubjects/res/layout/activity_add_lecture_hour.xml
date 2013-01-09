@@ -1,0 +1,61 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+     >
+
+<RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".AddLectureHour" >
+
+    
+
+      <Spinner
+          android:id="@+id/daySpinner"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentTop="true"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="20dp"
+          android:layout_marginTop="19dp"
+          android:entries="@array/daysOfWeek"
+           />
+
+      <ImageButton
+          android:id="@+id/imageButtonTime"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignBottom="@+id/editTextTime"
+          android:layout_below="@+id/daySpinner"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="15dp"
+          android:layout_toRightOf="@+id/editTextTime"
+          android:onClick="selectTime"
+          android:src="@drawable/ic_time" />
+
+      <EditText
+          android:id="@+id/editTextTime"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/daySpinner"
+          android:layout_below="@+id/daySpinner"
+          android:ems="10" >
+
+          <requestFocus />
+      </EditText>
+
+      <Button
+          android:id="@+id/buttonAddLec"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/editTextTime"
+          android:layout_alignParentBottom="true"
+          android:layout_alignRight="@+id/daySpinner"
+          android:onClick="addLectureHour"
+          android:text="Add Lecture" />
+
+</RelativeLayout>
+</ScrollView> 

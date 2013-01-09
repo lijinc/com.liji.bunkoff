@@ -1,0 +1,116 @@
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".AddSubject" >
+    
+    <ImageView
+        android:id="@+id/dividerSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nameText"
+        android:layout_alignRight="@+id/nameText"
+        android:layout_above="@+id/nameText"
+        android:layout_marginBottom="4dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/abs__ab_transparent_dark_holo" />
+
+     <TextView
+         android:id="@+id/subjectText"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/dividerSubject"
+         android:layout_alignTop="@+id/dividerSubject"
+         android:text="Subject"
+         android:textColor="@color/holo_blue_dark"
+         android:textStyle="bold" />
+    
+    
+    
+    <EditText
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Name" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/totalClassText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nameText"
+        android:layout_alignRight="@+id/nameText"
+        android:layout_below="@+id/nameText"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="Total Classes(eg:42)"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/minAttendenceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/totalClassText"
+        android:layout_alignRight="@+id/totalClassText"
+        android:layout_below="@+id/totalClassText"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="Min Attendence %(eg:80)"
+        android:inputType="number" />
+
+    
+
+     <Button
+        android:id="@+id/buttonAddLectureHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dividerLecture"
+        android:layout_alignRight="@+id/dividerLecture"
+		android:layout_alignParentBottom="true"
+        android:text="Add Lecture Hour"
+        android:onClick="addLectureHour" />
+
+     <ImageView
+        android:id="@+id/dividerLecture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/minAttendenceText"
+        android:layout_alignRight="@+id/minAttendenceText"
+        android:layout_below="@+id/minAttendenceText"
+        android:layout_marginTop="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/abs__ab_transparent_dark_holo" />
+
+     <TextView
+         android:id="@+id/lectureText"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/dividerLecture"
+         android:layout_alignTop="@+id/dividerLecture"
+         android:text="Lectures"
+         android:textColor="@color/holo_blue_dark"
+         android:textStyle="bold" />
+
+     <ListView
+         android:id="@+id/lectureListView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/dividerLecture"
+         android:layout_above="@+id/buttonAddLectureHour"
+         android:layout_below="@+id/dividerLecture"
+         android:layout_marginTop="5dp"
+         android:layout_alignRight="@+id/dividerLecture" >
+     </ListView>
+
+</RelativeLayout>
