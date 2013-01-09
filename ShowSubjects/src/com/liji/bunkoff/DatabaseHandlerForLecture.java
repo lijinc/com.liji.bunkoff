@@ -83,6 +83,14 @@ public class DatabaseHandlerForLecture extends SQLiteOpenHelper {
 	    return i;
 	}
 	
+	public int deleteLectureGivenId(int id){
+		SQLiteDatabase db = this.getWritableDatabase();
+	    int i=db.delete(TABLE_LECTURES, ID + " = ?",
+	          new String[] { String.valueOf(id) });
+	    db.close();
+	    return i;
+	}
+	
 	public void deleteAllLecture(){
 		SQLiteDatabase db=this.getWritableDatabase();
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_LECTURES);

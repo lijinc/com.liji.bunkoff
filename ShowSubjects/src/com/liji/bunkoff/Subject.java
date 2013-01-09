@@ -8,7 +8,7 @@ public class Subject implements Parcelable{
 	private String subName;
 	private int totalClass;
 	private int minAttendence;
-	
+	private boolean selected;
 	public Subject(){
 		
 	}
@@ -57,7 +57,15 @@ public class Subject implements Parcelable{
 	public void setMinAttendence(int minAttendence){
 		this.minAttendence=minAttendence;
 	}
-
+	
+	public boolean isSelected() {
+	    return selected;
+	}
+    
+	public void setSelected(boolean selected){
+	    this.selected = selected;
+	}
+	
 	@Override
 	public int describeContents() {
 		// TODO Auto-generated method stub

@@ -35,6 +35,7 @@ public class ShowSubjectInfo extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//try to fix view with listAdapter
 		setContentView(R.layout.activity_show_subject_info);
 		Intent i=getIntent();
 		sId=i.getIntExtra("subject",0);
@@ -119,7 +120,7 @@ public class ShowSubjectInfo extends SherlockFragmentActivity {
 		        countDialogFragment.show(getSupportFragmentManager(), "Error");
 	    	}
 	    	else{
-		    	DeleteDialog delDialogFragment = DeleteDialog.newInstance();
+		    	DeleteDialog delDialogFragment = DeleteDialog.newInstance("Are you sure you want to delete the selected?","1000");
 		        delDialogFragment.show(getSupportFragmentManager(), "Delete");
 	    	}
 			break;

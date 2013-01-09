@@ -979,10 +979,10 @@ containing a value of this type.
         public static final int abs__bright_foreground_inverse_holo_dark=0x7f050017;
         public static final int abs__bright_foreground_inverse_holo_light=0x7f050018;
         public static final int abs__holo_blue_light=0x7f050019;
-        public static final int abs__primary_text_disable_only_holo_dark=0x7f05001c;
-        public static final int abs__primary_text_disable_only_holo_light=0x7f05001d;
-        public static final int abs__primary_text_holo_dark=0x7f05001e;
-        public static final int abs__primary_text_holo_light=0x7f05001f;
+        public static final int abs__primary_text_disable_only_holo_dark=0x7f05001d;
+        public static final int abs__primary_text_disable_only_holo_light=0x7f05001e;
+        public static final int abs__primary_text_holo_dark=0x7f05001f;
+        public static final int abs__primary_text_holo_light=0x7f050020;
         public static final int default_circle_indicator_fill_color=0x7f050008;
         public static final int default_circle_indicator_page_color=0x7f050009;
         public static final int default_circle_indicator_stroke_color=0x7f05000a;
@@ -993,6 +993,7 @@ containing a value of this type.
         public static final int default_title_indicator_text_color=0x7f05000f;
         public static final int default_underline_indicator_selected_color=0x7f050010;
         public static final int holo_blue_dark=0x7f05001b;
+        public static final int holo_blue_light=0x7f05001c;
         public static final int transparent=0x7f05001a;
         public static final int vpi__background_holo_dark=0x7f050000;
         public static final int vpi__background_holo_light=0x7f050001;
@@ -1002,8 +1003,8 @@ containing a value of this type.
         public static final int vpi__bright_foreground_holo_light=0x7f050003;
         public static final int vpi__bright_foreground_inverse_holo_dark=0x7f050006;
         public static final int vpi__bright_foreground_inverse_holo_light=0x7f050007;
-        public static final int vpi__dark_theme=0x7f050020;
-        public static final int vpi__light_theme=0x7f050021;
+        public static final int vpi__dark_theme=0x7f050021;
+        public static final int vpi__light_theme=0x7f050022;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1249,16 +1250,17 @@ containing a value of this type.
         public static final int ic_add=0x7f020070;
         public static final int ic_date=0x7f020071;
         public static final int ic_delete=0x7f020072;
-        public static final int ic_done=0x7f020073;
-        public static final int ic_launcher=0x7f020074;
-        public static final int ic_time=0x7f020075;
-        public static final int vpi__tab_indicator=0x7f020076;
-        public static final int vpi__tab_selected_focused_holo=0x7f020077;
-        public static final int vpi__tab_selected_holo=0x7f020078;
-        public static final int vpi__tab_selected_pressed_holo=0x7f020079;
-        public static final int vpi__tab_unselected_focused_holo=0x7f02007a;
-        public static final int vpi__tab_unselected_holo=0x7f02007b;
-        public static final int vpi__tab_unselected_pressed_holo=0x7f02007c;
+        public static final int ic_delete_dark=0x7f020073;
+        public static final int ic_done=0x7f020074;
+        public static final int ic_launcher=0x7f020075;
+        public static final int ic_time=0x7f020076;
+        public static final int vpi__tab_indicator=0x7f020077;
+        public static final int vpi__tab_selected_focused_holo=0x7f020078;
+        public static final int vpi__tab_selected_holo=0x7f020079;
+        public static final int vpi__tab_selected_pressed_holo=0x7f02007a;
+        public static final int vpi__tab_unselected_focused_holo=0x7f02007b;
+        public static final int vpi__tab_unselected_holo=0x7f02007c;
+        public static final int vpi__tab_unselected_pressed_holo=0x7f02007d;
     }
     public static final class id {
         public static final int ShowSubjects=0x7f04004d;
@@ -1328,6 +1330,7 @@ containing a value of this type.
         public static final int homeAsUp=0x7f04000b;
         public static final int imageButtonTime=0x7f04003f;
         public static final int indicator=0x7f040056;
+        public static final int itemDelete=0x7f040065;
         public static final int lectureListView=0x7f04004a;
         public static final int lectureText=0x7f040049;
         public static final int listMode=0x7f040007;
@@ -1431,6 +1434,7 @@ containing a value of this type.
         public static final int add_delete=0x7f0c000f;
         public static final int add_menu=0x7f0c0010;
         public static final int done_menu=0x7f0c0011;
+        public static final int longclicksubmenu=0x7f0c0012;
     }
     public static final class string {
         public static final int about=0x7f0a0022;

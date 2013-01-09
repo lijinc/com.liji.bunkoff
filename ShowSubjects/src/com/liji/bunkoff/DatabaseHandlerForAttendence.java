@@ -103,6 +103,14 @@ public class DatabaseHandlerForAttendence extends SQLiteOpenHelper {
 	    return i;
 	}
 	
+	public int deleteBunkGivenId(int id){
+		SQLiteDatabase db = this.getWritableDatabase();
+	    int i=db.delete(TABLE_ATTENDENCE, ID + " = ?",
+	          new String[] { String.valueOf(id) });
+	    db.close();
+	    return i;
+	}
+	
 	public void deleteAllBunks(){
 		SQLiteDatabase db=this.getWritableDatabase();
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ATTENDENCE);
