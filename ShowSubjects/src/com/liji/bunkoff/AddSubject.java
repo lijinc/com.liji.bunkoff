@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuInflater;
@@ -22,7 +23,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.support.v4.app.NavUtils;
 
-public class AddSubject extends SherlockActivity {
+public class AddSubject extends SherlockFragmentActivity {
 	
 	private EditText nameText;
 	private EditText totalText;
@@ -59,9 +60,15 @@ public class AddSubject extends SherlockActivity {
 			nameText=(EditText) findViewById(R.id.nameText);
 			totalText=(EditText) findViewById(R.id.totalClassText);
 			minText=(EditText) findViewById(R.id.minAttendenceText);
-			nameText.setText(subList.get(0).getSubjectName());
-			totalText.setText(String.valueOf(subList.get(0).getTotalClass()));
-			minText.setText(String.valueOf(subList.get(0).getMinAttendence()));
+			if(!subList.get(0).getSubjectName().equals("NULLTEXT")){
+				nameText.setText(subList.get(0).getSubjectName());
+			}
+			if(!(subList.get(0).getTotalClass()==21001)){
+				totalText.setText(String.valueOf(subList.get(0).getTotalClass()));
+			}
+			if(!(subList.get(0).getMinAttendence()==21001)){
+				minText.setText(String.valueOf(subList.get(0).getMinAttendence()));
+			}
 			lectureList=dblTemp.getAllLecures(sid);
 			dblTemp.close();
 		}
@@ -81,7 +88,23 @@ public class AddSubject extends SherlockActivity {
 	  public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	    case R.id.doneItem:
-	    	addSubject();
+			nameText=(EditText) findViewById(R.id.nameText);
+			totalText=(EditText) findViewById(R.id.totalClassText);
+			minText=(EditText) findViewById(R.id.minAttendenceText);
+	    	if(nameText.getText().toString().trim().equals("")){
+		    	AddDialog addDialogFragment = AddDialog.newInstance("Subject Name cannot be empty.!!");
+		        addDialogFragment.show(getSupportFragmentManager(), "Error1");	    	
+		        }
+	    	else if(totalText.getText().toString().trim().equals("")){
+		    	AddDialog addDialogFragment = AddDialog.newInstance("Number of classes cannot be empty.!!");
+		        addDialogFragment.show(getSupportFragmentManager(), "Error2");	
+	    	}
+	    	else if(minText.getText().toString().trim().equals("")){
+		    	AddDialog addDialogFragment = AddDialog.newInstance("Minimum attendence cannot be empty.!!");
+		        addDialogFragment.show(getSupportFragmentManager(), "Error3");		    	}
+	    	else{
+	    		addSubject();	    
+	    		}
 		    break;
 
 	    default:
@@ -97,9 +120,28 @@ public class AddSubject extends SherlockActivity {
 		EditText tempNameText=(EditText) findViewById(R.id.nameText);
 		EditText tempTotalText=(EditText) findViewById(R.id.totalClassText);
 		EditText tempMinText=(EditText) findViewById(R.id.minAttendenceText);
-		String tempName=tempNameText.getText().toString();
-		int tempTotalClass=Integer.parseInt(tempTotalText.getText().toString());
-		int tempMinAttendence=Integer.parseInt(tempMinText.getText().toString());
+		String tempName;
+		int tempTotalClass;
+		int tempMinAttendence;
+		if(tempNameText.getText().toString().trim().equals("")){
+			tempName="NULLTEXT";
+		}
+		else
+		{
+			tempName=tempNameText.getText().toString();
+		}
+		if(tempTotalText.getText().toString().trim().equals("")){
+			tempTotalClass=21001;
+		}
+		else{
+			tempTotalClass=Integer.parseInt(tempTotalText.getText().toString());
+		}
+		if(tempMinText.getText().toString().trim().equals("")){
+			tempMinAttendence=21001;
+		}
+		else{
+			tempMinAttendence=Integer.parseInt(tempMinText.getText().toString());
+		}
 		dbs = new DatabaseHandlerForSubject(this);
 		dbsTemp=new DatabaseHandlerForTempSubject(this);
 		dbsTemp.deleteAllSubject();
