@@ -26,26 +26,25 @@ import com.viewpagerindicator.TitlePageIndicator;
 public class ShowSubjectInfo extends SherlockFragmentActivity {
 	public static final String[] CONTENT = new String[] { "Bunks","Lectures" };
 	private ViewPagerAdapter adapter;
-	private ViewPager pager;
     private List<Bunk> blist;
     private List<Lecture> llist;
 	private DatabaseHandlerForLecture dbl;
 	private DatabaseHandlerForAttendence dba;
-	private int sId;
+	private static TabPageIndicator indicator;
+	private static ViewPager pager;
+	private static int sId;
+	private static Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//try to fix view with listAdapter
+		context=this;
 		setContentView(R.layout.activity_show_subject_info);
 		Intent i=getIntent();
 		sId=i.getIntExtra("subject",0);
-        ViewPagerAdapter adapter = new ViewPagerAdapter( this,sId );
-        ViewPager pager =(ViewPager)findViewById( R.id.viewpager );
-      
-        TabPageIndicator indicator = (TabPageIndicator)findViewById( R.id.indicator );
-        pager.setAdapter( adapter );
-        indicator.setOnPageChangeListener(new DetailOnPageChangeListener());
-        indicator.setViewPager( pager );
+        pager =(ViewPager)findViewById( R.id.viewpager );
+        indicator = (TabPageIndicator)findViewById( R.id.indicator );
+        setView();
 
 	}
 	
@@ -66,23 +65,20 @@ public class ShowSubjectInfo extends SherlockFragmentActivity {
 	    		}
 	    	}
     	}
-    	finish();
-		Intent intent = new Intent(this, ShowSubjectInfo.class);
-		intent.putExtra("subject", sId);
-		startActivity(intent);
-		 }
+    	setView();
+		}
 
 	  @Override
 	  public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getSupportMenuInflater();
-	    inflater.inflate(R.menu.add_delete, menu);
+	    inflater.inflate(R.menu.add_menu, menu);
 	    return true;
 	  }
 	  
 	  @Override
 	  public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
-	    case R.id.addLecMenuItem:
+	    case R.id.addSubjectItem: 
 	    	if(DetailOnPageChangeListener.CURRENTPAGE==1){
 				Intent intent = new Intent(this, AddLectureHour.class);
 				intent.putExtra("fromSubInfoId", sId);
@@ -97,40 +93,22 @@ public class ShowSubjectInfo extends SherlockFragmentActivity {
 			    startActivity(intent);
 	    	}
 		    break;
-	    case R.id.deleteLecMenuItem:
-	    	dbl=new DatabaseHandlerForLecture(this);
-	    	dba=new DatabaseHandlerForAttendence(this);
-	    	int count=0;
-	    	if(dbl.getLectureCount(sId)!=0){
-	      		for(Lecture lec:CheckBoxLectureArrayAdapter.LECTLIST){
-			    	if(lec.isSelected()==true){
-			    		count++;
-			    	}
-	    		}
-	    	}
-	    	if(dba.getBunkCount(sId)!=0){
-	    		for(Bunk bunk:CheckBoxBunkArrayAdapter.BUNKLIST){
-		    		if(bunk.isSelected()==true){
-		    			count++;
-		    		}
-		    	}
-	    	}
-	    	if(count==0){
-		    	CountDialog countDialogFragment = CountDialog.newInstance();
-		        countDialogFragment.show(getSupportFragmentManager(), "Error");
-	    	}
-	    	else{
-		    	DeleteDialog delDialogFragment = DeleteDialog.newInstance("Are you sure you want to delete the selected?","1000");
-		        delDialogFragment.show(getSupportFragmentManager(), "Delete");
-	    	}
-			break;
+	    case R.id.itemSettings:
+	    	Intent i = new Intent(this, SettingsPerfAct.class);
+		    startActivity(i);
+	    	break;
 	    default:
 	    	break;
 	    }
 
 	    return true;
 	  }
-
+	  public static void setView(){
+		  ViewPagerAdapter adapter = new ViewPagerAdapter( context,sId );
+		  pager.setAdapter( adapter );
+	      indicator.setOnPageChangeListener(new DetailOnPageChangeListener());
+	      indicator.setViewPager(pager, DetailOnPageChangeListener.CURRENTPAGE);
+	  }
 
 	
 	

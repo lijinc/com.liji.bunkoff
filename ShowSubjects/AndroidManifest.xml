@@ -132,13 +132,16 @@
         <activity
             android:name="com.liji.bunkoff.ShowSubjectInfo"
             android:label="@string/title_activity_show_subject_info"
-        	android:theme="@style/Theme.VPI"
-            android:parentActivityName="com.liji.bunkoff.ShowSubjects" >
+            android:parentActivityName="com.liji.bunkoff.ShowSubjects"
+            android:theme="@style/Theme.VPI" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.liji.bunkoff.ShowSubjects" />
         </activity>
-        
+        <activity
+            android:name="com.liji.bunkoff.SettingsPerfAct"
+            android:label="@string/title_activity_settings_perf" >
+        </activity>
     </application>
 
 </manifest>

@@ -4,10 +4,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.ActionMode;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+import com.liji.bunkoff.ShowSubjects.ActionModeDelete;
+
 import android.widget.ArrayAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Parcelable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
@@ -17,6 +28,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -32,6 +44,8 @@ public class ViewPagerAdapter extends PagerAdapter
         private DatabaseHandlerForAttendence dba;
         private ListView lecListView;
         private ListView bunkListView;
+    	ActionBar actionBar;
+        ActionMode mMode;
         public ViewPagerAdapter( Context context,int sId )
         {		
         		this.sId=sId;
@@ -73,6 +87,37 @@ public class ViewPagerAdapter extends PagerAdapter
                     lecListView.setAdapter( chkLecAdapter );
         		}
                 lecListView.setSelection( scrollPosition[ position ] );
+                lecListView.setOnItemClickListener(new OnItemClickListener() {
+        	        public void onItemClick(AdapterView<?> parent, View view,
+        		            int position, long id) {
+        		        	
+        		                Lecture lec=CheckBoxLectureArrayAdapter.LECTLIST.get(position);
+        		                if(lec.isSelected()){
+        			                lec.setSelected(false);
+        			                CheckBoxLectureArrayAdapter.LECTLIST.set(position, lec);
+        			                view.setBackgroundColor(Color.TRANSPARENT);
+
+        		                }
+        		                else{	                	
+        			                lec.setSelected(true);
+        			                CheckBoxLectureArrayAdapter.LECTLIST.set(position, lec);
+        			                view.setBackgroundColor(Color.parseColor("#7733B5E5"));
+        		                }
+
+        		        }
+        		      });
+                lecListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+                    public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                            int pos, long id) {
+                        arg1.setBackgroundColor(Color.parseColor("#7733B5E5"));
+                        Lecture lec=CheckBoxLectureArrayAdapter.LECTLIST.get(pos);
+                        lec.setSelected(true);
+                        CheckBoxLectureArrayAdapter.LECTLIST.set(pos, lec);
+                        mMode = ((SherlockFragmentActivity) context).startActionMode(new ActionModeDelete());
+						return true;
+                    }
+                });
                 lecListView.setOnScrollListener( new OnScrollListener(){
                           
                             @Override
@@ -100,6 +145,37 @@ public class ViewPagerAdapter extends PagerAdapter
                     bunkListView.setAdapter(chkBunkAdapter);
         		}
                 bunkListView.setSelection( scrollPosition[ position ] );
+                bunkListView.setOnItemClickListener(new OnItemClickListener() {
+        	        public void onItemClick(AdapterView<?> parent, View view,
+        		            int position, long id) {
+        		        	
+        		                Bunk bun=CheckBoxBunkArrayAdapter.BUNKLIST.get(position);
+        		                if(bun.isSelected()){
+        			                bun.setSelected(false);
+        			                CheckBoxBunkArrayAdapter.BUNKLIST.set(position, bun);
+        			                view.setBackgroundColor(Color.TRANSPARENT);
+
+        		                }
+        		                else{	                	
+        			                bun.setSelected(true);
+        			                CheckBoxBunkArrayAdapter.BUNKLIST.set(position, bun);
+        			                view.setBackgroundColor(Color.parseColor("#7733B5E5"));
+        		                }
+
+        		        }
+        		      });
+                bunkListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+                    public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                            int pos, long id) {
+                        arg1.setBackgroundColor(Color.parseColor("#7733B5E5"));
+                        Bunk bun=CheckBoxBunkArrayAdapter.BUNKLIST.get(pos);
+                        bun.setSelected(true);
+                        CheckBoxBunkArrayAdapter.BUNKLIST.set(pos, bun);
+                        mMode = ((SherlockFragmentActivity) context).startActionMode(new ActionModeDelete());
+						return true;
+                    }
+                });
                 bunkListView.setOnScrollListener( new OnScrollListener(){
                             
                             @Override
@@ -158,5 +234,74 @@ public class ViewPagerAdapter extends PagerAdapter
         public void startUpdate( View view )
         {
         }
+        
+        public final class ActionModeDelete implements ActionMode.Callback {
+    		@Override
+    		public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+    			// TODO Auto-generated method stub
+    			return false;
+    		}
+    		
+    		@Override
+    		public void onDestroyActionMode(ActionMode mode) {
+    			int pos=0;
+    			for(Lecture lec:CheckBoxLectureArrayAdapter.LECTLIST){
+    				 lec.setSelected(false);
+    				 CheckBoxLectureArrayAdapter.LECTLIST.set(pos, lec);
+    	             pos++;
+    			}
+    			pos=0;
+    			for(Bunk bun:CheckBoxBunkArrayAdapter.BUNKLIST){
+    				bun.setSelected(false);
+    				CheckBoxBunkArrayAdapter.BUNKLIST.set(pos, bun);
+    				pos++;
+    			}
+    			ShowSubjectInfo.setView();
+    		}
+			
+    		@Override
+    		public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+    	         MenuInflater inflater = mode.getMenuInflater();
+    	         inflater.inflate(R.menu.longclicksubmenu, menu);
+    	         return true;
+    		}
+    		
+    		@Override
+    		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+    			  switch (item.getItemId()) {
+    	            case R.id.itemDelete:
+    	            	dbl=new DatabaseHandlerForLecture(context);
+    	            	dba=new DatabaseHandlerForAttendence(context);
+    	            	int count=0;
+    	            	if(dbl.getLectureCount(sId)!=0){
+    	              		for(Lecture lec:CheckBoxLectureArrayAdapter.LECTLIST){
+    	            	    	if(lec.isSelected()==true){
+    	            	    		count++;
+    	            	    	}
+    	            		}
+    	            	}
+    	            	if(dba.getBunkCount(sId)!=0){
+    	            		for(Bunk bunk:CheckBoxBunkArrayAdapter.BUNKLIST){
+    	                		if(bunk.isSelected()==true){
+    	                			count++;
+    	                		}
+    	                	}
+    	            	}
+    	            	if(count==0){
+    	                	CountDialog countDialogFragment = CountDialog.newInstance();
+    	                    countDialogFragment.show(((SherlockFragmentActivity) context).getSupportFragmentManager(), "Error");
+    	            	}
+    	            	else{
+    	                	DeleteDialog delDialogFragment = DeleteDialog.newInstance("Are you sure you want to delete the selected items?","1000");
+    	                    delDialogFragment.show(((SherlockFragmentActivity) context).getSupportFragmentManager(), "Delete");    
+    	            	}
+    	            	
+    	            	return true;
+    	            default:
+    	                mode.finish();
+    	                return false;
+    	       }			
+    		}
+    	}
 
 }

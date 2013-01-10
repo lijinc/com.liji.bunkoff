@@ -6,6 +6,11 @@
     <item android:id="@+id/deleteLecMenuItem" 
         android:showAsAction="always"
         android:icon="@drawable/ic_delete"></item>
-    
+    <item android:id="@+id/itemOption2" android:showAsAction="always" android:title="Options" android:icon="@drawable/abs__ic_menu_moreoverflow_normal_holo_dark">
+    <menu>
+        <item android:id="@+id/itemSettings2" android:showAsAction="always|withText" android:title="Settings"/>
+        <item android:id="@+id/itemAbout2" android:showAsAction="always|withText" android:title="About"/>
+    </menu>
+</item>
 
 </menu>

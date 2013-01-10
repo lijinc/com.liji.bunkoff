@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/addSubjectItem"
+<menu xmlns:android="http://schemas.android.com/apk/res/android" ><item android:id="@+id/addSubjectItem"
           android:showAsAction="always" 
           android:title="Add" 
           android:icon="@drawable/ic_add">
     </item>
+<item android:id="@+id/itemOption" android:showAsAction="always" android:title="Options" android:icon="@drawable/abs__ic_menu_moreoverflow_normal_holo_dark">
+    <menu>
+        <item android:id="@+id/itemSettings" android:showAsAction="always|withText" android:title="Settings"/>
+        <item android:id="@+id/itemAbout" android:showAsAction="always|withText" android:title="About"/>
+    </menu>
+</item>
     
 
 </menu>

@@ -17,3 +17,8 @@ public class EditLectureHours extends SherlockActivity {
 	}
 
 }
+
+
+/*case R.id.deleteLecMenuItem:
+	
+	break;*/

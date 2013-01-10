@@ -111,6 +111,10 @@ public class ShowSubjects extends SherlockFragmentActivity {
 	    	Intent intent = new Intent(this, AddSubject.class);
 		    startActivity(intent);
 		    break;
+	    case R.id.itemSettings:
+	    	Intent i = new Intent(this, SettingsPerfAct.class);
+		    startActivity(i);
+		    break;
 
 	    default:
 	    	break;

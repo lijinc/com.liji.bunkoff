@@ -7,9 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class CheckBoxLectureArrayAdapter extends BaseAdapter {
@@ -40,11 +42,10 @@ public class CheckBoxLectureArrayAdapter extends BaseAdapter {
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.textcheckbox, parent, false);
+            convertView = mInflater.inflate(android.R.layout.two_line_list_item, parent, false);
         }
-        TextView day = (TextView) convertView.findViewById(R.id.datelabel);
-        TextView timelbl = (TextView) convertView.findViewById(R.id.timelabel);
-        final CheckBox chkLec = (CheckBox) convertView.findViewById(R.id.check);
+        TextView day = (TextView) convertView.findViewById(android.R.id.text1);
+        TextView timelbl = (TextView) convertView.findViewById(android.R.id.text2);
         Lecture lec = LECTLIST.get(position);
         day.setText(" "+lec.getDay());
         String time;
@@ -58,16 +59,6 @@ public class CheckBoxLectureArrayAdapter extends BaseAdapter {
         	time=" "+(lec.getHour()-12)+":"+lec.getMinute()+" PM";
         }
         timelbl.setText(time);
-        chkLec.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView,
-                    boolean isChecked) {
-        		Lecture l=LECTLIST.get(position);
-            	l.setSelected(isChecked);
-            	LECTLIST.set(position, l);
-            }
-        });
-
         return convertView;
 	}
 }

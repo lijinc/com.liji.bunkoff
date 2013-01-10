@@ -40,11 +40,10 @@ public class CheckBoxBunkArrayAdapter extends BaseAdapter {
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.textcheckbox, parent, false);
+            convertView = mInflater.inflate(android.R.layout.two_line_list_item, parent, false);
         }
-        TextView day = (TextView) convertView.findViewById(R.id.datelabel);
-        TextView timelbl = (TextView) convertView.findViewById(R.id.timelabel);
-        final CheckBox chkBunk = (CheckBox) convertView.findViewById(R.id.check);
+        TextView day = (TextView) convertView.findViewById(android.R.id.text1);
+        TextView timelbl = (TextView) convertView.findViewById(android.R.id.text2);
         Bunk bunk = BUNKLIST.get(position);
         day.setText(" "+bunk.getDayOfMonth()+"/"+bunk.getMonth()+"/"+bunk.getYear());
         String time;
@@ -58,16 +57,6 @@ public class CheckBoxBunkArrayAdapter extends BaseAdapter {
         	time=" "+(bunk.getHour()-12)+":"+bunk.getMinute()+" PM";
         }
         timelbl.setText(time);
-        chkBunk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView,
-                    boolean isChecked) {
-        			Bunk b=BUNKLIST.get(position);
-            		b.setSelected(isChecked);
-            		BUNKLIST.set(position, b);
-    		    	Log.d("ddeedd", String.valueOf(BUNKLIST.size()));
-            }
-        });
 
         return convertView;
 	}

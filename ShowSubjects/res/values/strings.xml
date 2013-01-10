@@ -35,5 +35,6 @@
     <string name="title_activity_show_subject_details">ShowSubjectDetails</string>
     <string name="title_activity_show_subject_info">ShowSubjectInfo</string>
     <string name="title_activity_time_pick">TimePickActivity</string>
+    <string name="title_activity_settings_perf">SettingsPerfAct</string>
 
 </resources>
