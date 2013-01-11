@@ -45,9 +45,11 @@ public class ShowSubjects extends SherlockFragmentActivity {
 		setContentView(R.layout.activity_show_subjects);
 		actionBar = getSupportActionBar();
 		//if subcount== 0 show help
-		setTitle("Bunk-Off!!!");
+		setTitle("Bunk-Off!!");
 		subjectListView = (ListView) findViewById(R.id.showAllSubjectList);
 		dbs=new DatabaseHandlerForSubject(this);
+		Intent intent = new Intent(this,InitializeAlarmService.class);
+		startService(intent);
 		subjectList =new ArrayList<Subject>();
 		subjectList=dbs.getAllSubject();
 		dbs.close();
