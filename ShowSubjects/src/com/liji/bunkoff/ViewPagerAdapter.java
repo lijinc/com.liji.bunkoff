@@ -46,6 +46,7 @@ public class ViewPagerAdapter extends PagerAdapter
         private ListView bunkListView;
     	ActionBar actionBar;
         ActionMode mMode;
+        public static ActionMode mmd;
         public ViewPagerAdapter( Context context,int sId )
         {		
         		this.sId=sId;
@@ -268,7 +269,8 @@ public class ViewPagerAdapter extends PagerAdapter
     		
     		@Override
     		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-    			  switch (item.getItemId()) {
+    			mmd=mode;  
+    			switch (item.getItemId()) {
     	            case R.id.itemDelete:
     	            	dbl=new DatabaseHandlerForLecture(context);
     	            	dba=new DatabaseHandlerForAttendence(context);

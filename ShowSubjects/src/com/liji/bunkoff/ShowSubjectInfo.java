@@ -66,6 +66,7 @@ public class ShowSubjectInfo extends SherlockFragmentActivity {
 	    	}
     	}
     	setView();
+    	ViewPagerAdapter.mmd.finish();
 		}
 
 	  @Override
