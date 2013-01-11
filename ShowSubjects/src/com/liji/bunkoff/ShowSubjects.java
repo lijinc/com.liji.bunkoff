@@ -157,8 +157,20 @@ public class ShowSubjects extends SherlockFragmentActivity {
 		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
 			  switch (item.getItemId()) {
 	            case R.id.itemDelete:
-	            	DeleteDialog delDialogFragment = DeleteDialog.newInstance("Are you sure you want to delete the selected Subjects?","1001");
-			        delDialogFragment.show(getSupportFragmentManager(), "Delete1");
+	            	int count=0;
+	            	for(Subject sub:subjectList){
+	            		if(sub.isSelected()){
+	        				count++;
+	            		}
+	    			}
+	            	if(count==0){
+	            		CountDialog countDialogFragment = CountDialog.newInstance();
+	                    countDialogFragment.show(((SherlockFragmentActivity) context).getSupportFragmentManager(), "Error");
+	            	}
+	            	else{
+	            		DeleteDialog delDialogFragment = DeleteDialog.newInstance("Are you sure you want to delete the selected Subjects?","1001");
+				        delDialogFragment.show(getSupportFragmentManager(), "Delete");
+	            	}
 	            	return true;
 	            default:
 	                mode.finish();
