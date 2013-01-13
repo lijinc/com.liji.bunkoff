@@ -50,21 +50,25 @@ public class InitializeAlarmService extends Service {
 			String[] daysOfWeek = getResources().getStringArray(R.array.daysOfWeek);
 			List<Lecture> lectureList = new ArrayList<Lecture>();
 			dbl = new DatabaseHandlerForLecture(this);
-			lectureList = dbl.getLectureTimesForDay(daysOfWeek[realDay-1]);
-			Log.d("hii", "get here");
+			if(realDay==0){
+				lectureList = dbl.getLectureTimesForDay(daysOfWeek[6]);
+			}
+			else{
+				lectureList = dbl.getLectureTimesForDay(daysOfWeek[(realDay-1)]);
+			}
+			Log.d("hii",daysOfWeek[(realDay)%6]);
 			Collections.sort(lectureList, new ComparebleLecture());
-			Log.d("hii", "sorted");
 			List<Lecture> temp=filterAlarms(lectureList, totalMinutes);
 			if(lectureList.isEmpty()){
-				Log.d("hii", "im empty");
 				alarmTime.set(Calendar.HOUR_OF_DAY, 0);
-				alarmTime.set(Calendar.MINUTE, 1);
-				alarmTime.set(Calendar.DAY_OF_WEEK,realDay+2 );
+				alarmTime.set(Calendar.MINUTE, 0);
+				alarmTime.add(Calendar.DAY_OF_WEEK, 1);
+				Log.d("Daaay", String.valueOf(alarmTime.getTime()));
 				Intent i = new Intent(this, NextDayInitializeReceiver.class);
 				PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324243, i, PendingIntent.FLAG_CANCEL_CURRENT);
 				AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 				alarmManager.set(AlarmManager.RTC_WAKEUP,alarmTime.getTimeInMillis(), pendingIntent);
-				Log.d(null, "alarmset");
+				Log.d(null, "alarmsetaaa");
 				Toast.makeText(this, "Alarm set in " +String.valueOf(alarmTime.getTime())+ " seconds",
 				     Toast.LENGTH_LONG).show();		}
 			else{

@@ -19,7 +19,7 @@ public class DeleteDialog extends SherlockDialogFragment {
 		        args.putString("id", id);
 		        f.setArguments(args);
 		        return f;
-		    }
+	}
 
 		 @Override
 		 public Dialog onCreateDialog(Bundle savedInstanceState) {

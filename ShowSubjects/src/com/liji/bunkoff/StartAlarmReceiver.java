@@ -17,7 +17,7 @@ public class StartAlarmReceiver extends BroadcastReceiver {
 		Intent is =new Intent(context,InitializeAlarmService.class);
 		context.stopService(is);
 		Bundle b=intent.getExtras();
-		Intent i = new Intent(context,GngToClassAlert.class);
+		Intent i = new Intent(context,GngToClass.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		i.putExtras(b);
 		context.startActivity(i);

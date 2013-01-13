@@ -106,7 +106,7 @@
         </receiver>
 
         <activity
-            android:name="com.liji.bunkoff.GngToClassAlert"
+            android:name="com.liji.bunkoff.GngToClass"
             android:excludeFromRecents="true"
             android:label="@string/title_activity_gng_to_class_alert"
             android:launchMode="singleInstance"
