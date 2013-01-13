@@ -3,11 +3,14 @@ package com.liji.bunkoff;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.Menu;
 import android.view.WindowManager;
@@ -32,6 +35,13 @@ public class GngToClass extends SherlockFragmentActivity {
 		bunk=b.getParcelable("bunk");
 		Intent is =new Intent(this,InitializeAlarmService.class);
 		startService(is);
+		SharedPreferences setPreference=PreferenceManager.getDefaultSharedPreferences(this);
+		if(setPreference.getBoolean("checkBoxVibratePref", true)){
+			Vibrator vibrator;
+			vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+			long[] pattern = { 500, 300 };  
+			vibrator.vibrate(pattern,2);
+		}
 		LectureDialog lecDialogFragment = LectureDialog.newInstance("Are you attending "+sub.getSubjectName()+" hour?","1002");
         lecDialogFragment.show(getSupportFragmentManager(), "Going");
 
