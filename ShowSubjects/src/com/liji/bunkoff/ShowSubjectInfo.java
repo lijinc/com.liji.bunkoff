@@ -39,6 +39,8 @@ public class ShowSubjectInfo extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		//try to fix view with listAdapter
 		context=this;
+    	Intent in=new Intent(this,InitializeAlarmService.class);
+    	startService(in);
 		setContentView(R.layout.activity_show_subject_info);
 		Intent i=getIntent();
 		sId=i.getIntExtra("subject",0);
@@ -67,6 +69,8 @@ public class ShowSubjectInfo extends SherlockFragmentActivity {
     	}
     	setView();
     	ViewPagerAdapter.mmd.finish();
+    	Intent i=new Intent(this,InitializeAlarmService.class);
+    	startService(i);
 		}
 
 	  @Override

@@ -43,7 +43,6 @@ public class AddLectureHour extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_lecture_hour);
 		spinDay=(Spinner) findViewById(R.id.daySpinner);
-		spinDay.setSelection(c.get(Calendar.DAY_OF_WEEK)-2);
 		spinDay.setOnItemSelectedListener(new OnItemSelectedListener()
 		{
 			 public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
