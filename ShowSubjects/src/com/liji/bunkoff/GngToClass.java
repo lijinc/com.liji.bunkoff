@@ -44,7 +44,6 @@ public class GngToClass extends SherlockFragmentActivity {
 		}
 		LectureDialog lecDialogFragment = LectureDialog.newInstance("Are you attending "+sub.getSubjectName()+" hour?","1002");
         lecDialogFragment.show(getSupportFragmentManager(), "Going");
-
 	}
 
 

@@ -31,11 +31,6 @@
                 		android:title="Ringtones"
                 		android:key="ringtonePref" />
 			   <CheckBoxPreference
-                        android:title="Led notification"
-                        android:defaultValue="false"
-                        android:summary="Turn led notification on or off"
-                        android:key="checkBoxLedPref" />
-			   <CheckBoxPreference
                         android:title="Show notification text"
                         android:defaultValue="true"
                         android:summary="Display alert in the status bar"
