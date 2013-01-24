@@ -29,12 +29,7 @@
                			android:name="Ringtone Preference"
                 		android:summary="Select a alert tone"
                 		android:title="Ringtones"
-                		android:key="ringtonePref" />
-			   <CheckBoxPreference
-                        android:title="Show notification text"
-                        android:defaultValue="true"
-                        android:summary="Display alert in the status bar"
-                        android:key="checkBoxNotifPref" />
+                		android:key="ringtonePref" />			   
     </PreferenceCategory>
 
 	<PreferenceCategory
@@ -49,6 +44,6 @@
                         android:title="Allways on memory"
                         android:defaultValue="False"
                         android:summary="Check only if android kills this app "
-                        android:key="checkBoxDelPref" />
+                        android:key="checkBoxMemPref" />
     </PreferenceCategory>
 </PreferenceScreen>

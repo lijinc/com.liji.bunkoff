@@ -66,6 +66,8 @@ public class GngToClass extends SherlockFragmentActivity {
 
 	void okClicked(){
 		manager.cancel(10013);
+		Intent is =new Intent(this,InitializeAlarmService.class);
+		startService(is);
 		finish();
 	}
 	
@@ -74,6 +76,8 @@ public class GngToClass extends SherlockFragmentActivity {
 		dba = new DatabaseHandlerForAttendence(context);
 		dba.addBunk(bunk);
 		manager.cancel(10013);
+		Intent is =new Intent(this,InitializeAlarmService.class);
+		startService(is);
 		finish();
 	}
 }
