@@ -68,13 +68,18 @@ public class InitializeAlarmService extends Service {
 				alarmTime.set(Calendar.MINUTE, 0);
 				alarmTime.add(Calendar.DAY_OF_WEEK, 1);
 				if(setPreference.getBoolean("checkBoxMemPref", false)){
+					Intent pint = new Intent(this, ShowSubjects.class);
+					PendingIntent pIntent = PendingIntent.getActivity(this, 0, pint, 0);
 					NotificationCompat.Builder builder =  
 				            new NotificationCompat.Builder(this)  
 				            .setSmallIcon(R.drawable.ic_launcher)  
+				            .setContentIntent(pIntent)
 				            .setContentTitle("Bunk-Off")  
 				            .setContentText("No Lectures for today.!!");
 				    manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);  
-				    manager.notify(10013, builder.build());  
+				    manager.notify(10013, builder.build());
+				    startForeground(10013, builder.build());
+
 				}
 				Log.d("Daaay", String.valueOf(alarmTime.getTime()));
 				Intent i = new Intent(this, NextDayInitializeReceiver.class);
@@ -98,13 +103,17 @@ public class InitializeAlarmService extends Service {
 		        	time=" "+(lectureList.get(0).getHour()-12)+":"+lectureList.get(0).getMinute()+" PM";
 		        }
 				if(setPreference.getBoolean("checkBoxMemPref", false)){
+					Intent pint = new Intent(this, ShowSubjects.class);
+					PendingIntent pIntent = PendingIntent.getActivity(this, 0, pint, 0);
 					NotificationCompat.Builder builder =  
 				            new NotificationCompat.Builder(this)  
-				            .setSmallIcon(R.drawable.ic_launcher)  
+				            .setSmallIcon(R.drawable.ic_launcher) 
+				            .setContentIntent(pIntent)
 				            .setContentTitle("Bunk-Off")  
 				            .setContentText("Next class on "+sub.getSubjectName()+"at"+time);
 				    manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);  
 				    manager.notify(10013, builder.build()); 
+				    startForeground(10013, builder.build());
 				}
 				  
 				alarmTime.set(Calendar.HOUR_OF_DAY, lectureList.get(0).getHour());
