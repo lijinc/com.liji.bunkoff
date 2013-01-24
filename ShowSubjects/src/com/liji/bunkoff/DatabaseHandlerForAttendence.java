@@ -114,6 +114,5 @@ public class DatabaseHandlerForAttendence extends SQLiteOpenHelper {
 	public void deleteAllBunks(){
 		SQLiteDatabase db=this.getWritableDatabase();
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ATTENDENCE);
-		onCreate(db);
 	}
 }

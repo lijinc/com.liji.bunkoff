@@ -34,12 +34,9 @@
 
 	<PreferenceCategory
                 android:title="Advanced ">
-       			<EditTextPreference
-                		android:name="Factory Reset"
-                		android:summary="Delete all subjects,lectures and bunks"
-                		android:defaultValue="Nothing"
-                		android:title="Factory Reset"
-                		android:key="editTextFactoryPref" />
+       			<Preference android:title="Factory Reset"
+						android:summary="Delete all subjects,lectures and bunks"
+   						android:key="factResetPref" />
                 <CheckBoxPreference
                         android:title="Allways on memory"
                         android:defaultValue="False"

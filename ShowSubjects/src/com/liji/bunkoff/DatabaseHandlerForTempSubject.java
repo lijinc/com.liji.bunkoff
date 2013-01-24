@@ -74,7 +74,10 @@ public class DatabaseHandlerForTempSubject extends SQLiteOpenHelper {
 		return subjectList;
 	}
 	
-	
+	public void deleteTempSubject(){
+		SQLiteDatabase db=this.getWritableDatabase();
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_TEMP_SUBJECTS);
+	}
 	
 	public void deleteAllSubject(){
 		SQLiteDatabase db=this.getWritableDatabase();

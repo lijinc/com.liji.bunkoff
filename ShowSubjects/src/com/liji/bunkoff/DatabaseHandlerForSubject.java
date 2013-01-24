@@ -129,6 +129,10 @@ public class DatabaseHandlerForSubject extends SQLiteOpenHelper {
 	public void deleteAllSubject(){
 		SQLiteDatabase db=this.getWritableDatabase();
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SUBJECTS);
+	}
+	
+	public void createTable(){
+		SQLiteDatabase db=this.getWritableDatabase();
 		onCreate(db);
 	}
 }

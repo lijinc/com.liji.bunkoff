@@ -73,7 +73,10 @@ public class DatabaseHandlerForTempLecture extends SQLiteOpenHelper {
 		return lectureList;
 	}
 	
-
+	public void deleteTempLecture(){
+		SQLiteDatabase db=this.getWritableDatabase();
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_TEMP_LECTURES);
+	}
 	
 	public void deleteAllLecture(){
 		SQLiteDatabase db=this.getWritableDatabase();

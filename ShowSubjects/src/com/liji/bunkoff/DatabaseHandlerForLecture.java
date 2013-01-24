@@ -94,7 +94,6 @@ public class DatabaseHandlerForLecture extends SQLiteOpenHelper {
 	public void deleteAllLecture(){
 		SQLiteDatabase db=this.getWritableDatabase();
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_LECTURES);
-		onCreate(db);
 	}
 	
 	public List<Lecture> getLectureTimesForDay(String day){
