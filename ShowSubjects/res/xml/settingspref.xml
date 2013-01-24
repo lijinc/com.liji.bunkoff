@@ -34,7 +34,7 @@
 			       		android:key="timePref"
 			        	android:summary="Defines how long before the app alerts the user"
 			        	android:title="Alert Time"
-			        	android:defaultValue="1"
+			        	android:defaultValue="5"
                       	android:entries="@array/time_before_alarm"
                       	android:entryValues="@array/time_val"/>			   
     </PreferenceCategory>

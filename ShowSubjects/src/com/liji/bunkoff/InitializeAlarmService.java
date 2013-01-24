@@ -64,7 +64,7 @@ public class InitializeAlarmService extends Service {
 			}
 			Log.d("hii",daysOfWeek[(realDay)%6]);
 			Collections.sort(lectureList, new ComparebleLecture());
-			List<Lecture> temp=filterAlarms(lectureList, totalMinutes);
+			List<Lecture> temp=filterAlarms(lectureList, totalMinutes+bTime);
 			if(lectureList.isEmpty()){
 				alarmTime.set(Calendar.HOUR_OF_DAY, 0);
 				alarmTime.set(Calendar.MINUTE, 0);

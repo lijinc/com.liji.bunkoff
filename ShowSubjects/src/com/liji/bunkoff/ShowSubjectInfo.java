@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.util.Log;
@@ -84,6 +85,9 @@ public class ShowSubjectInfo extends SherlockFragmentActivity {
 	  @Override
 	  public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
+	    case android.R.id.home:
+            NavUtils.navigateUpFromSameTask(this);
+            break;
 	    case R.id.addSubjectItem: 
 	    	if(DetailOnPageChangeListener.CURRENTPAGE==1){
 				Intent intent = new Intent(this, AddLectureHour.class);
