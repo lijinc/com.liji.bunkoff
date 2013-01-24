@@ -4,6 +4,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.view.Menu;
 public class DataDeleteActivity extends SherlockFragmentActivity {
 	private DatabaseHandlerForSubject dbs;
 	private DatabaseHandlerForLecture dbl;
+	Context context=this;
 	private DatabaseHandlerForAttendence dba;
 	private DatabaseHandlerForTempSubject dbts;
 	private DatabaseHandlerForTempLecture dbtl;
@@ -24,7 +26,6 @@ public class DataDeleteActivity extends SherlockFragmentActivity {
 	
 	public void okClicked(){
 		Log.d("hii", "msg");
-		stopService(InitializeAlarmService.class);
 		dbs=new DatabaseHandlerForSubject(this);
 		dbl=new DatabaseHandlerForLecture(this);
 		dba=new DatabaseHandlerForAttendence(this);
@@ -38,11 +39,6 @@ public class DataDeleteActivity extends SherlockFragmentActivity {
 		dbs.createTable();
 		Intent in=new Intent(this,SettingsPerfAct.class);
 		startActivity(in);
-	}
-
-	private void stopService(Class<InitializeAlarmService> class1) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

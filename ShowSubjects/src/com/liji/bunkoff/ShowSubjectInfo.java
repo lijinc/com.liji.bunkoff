@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -115,6 +116,15 @@ public class ShowSubjectInfo extends SherlockFragmentActivity {
 	      indicator.setViewPager(pager, DetailOnPageChangeListener.CURRENTPAGE);
 	  }
 
+	  @Override
+		public boolean onKeyDown(int keyCode, KeyEvent event) {
+		    if (keyCode == KeyEvent.KEYCODE_BACK) { 
+				Intent intent = new Intent(this,ShowSubjects.class);
+				startActivity(intent);
+				return true;
+		    }
+		    return super.onKeyDown(keyCode, event);
+		}
 	
 	
 }

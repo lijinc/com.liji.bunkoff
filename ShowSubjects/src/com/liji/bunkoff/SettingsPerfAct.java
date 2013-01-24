@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 
 public class SettingsPerfAct extends Activity {
@@ -37,5 +38,13 @@ public class SettingsPerfAct extends Activity {
 			});
         }
     }
-
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if (keyCode == KeyEvent.KEYCODE_BACK) { 
+			Intent intent = new Intent(this,ShowSubjects.class);
+			startActivity(intent);
+			return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
 }

@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
@@ -36,6 +37,7 @@ public class ShowSubjects extends SherlockFragmentActivity {
 	private DatabaseHandlerForAttendence dba;
 	private ListView subjectListView;
 	private SubjectArrayAdapter subAdapter ;
+	private Menu mainMenu;
 	Context context;
 	List<Subject> subjectList;
 	@Override
@@ -101,6 +103,7 @@ public class ShowSubjects extends SherlockFragmentActivity {
 
 	 @Override
 	  public boolean onCreateOptionsMenu(Menu menu) {
+		mainMenu=menu;
 	    MenuInflater inflater = getSupportMenuInflater();
 	    inflater.inflate(R.menu.add_menu, menu);
 	    return true;
@@ -195,5 +198,6 @@ public class ShowSubjects extends SherlockFragmentActivity {
 	    	Intent intent = new Intent(context, ShowSubjects.class);
 		    startActivity(intent);
 		}  
+		
 	  
 }

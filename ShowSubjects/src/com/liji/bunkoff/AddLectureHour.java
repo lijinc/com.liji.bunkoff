@@ -19,6 +19,7 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -37,11 +38,13 @@ public class AddLectureHour extends SherlockFragmentActivity {
 	 private int hour;
 	 private int id;
 	 private DatabaseHandlerForLecture dbl;
+	 private Intent in;
 	 final Calendar c=Calendar.getInstance();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_lecture_hour);
+		in=getIntent();
 		spinDay=(Spinner) findViewById(R.id.daySpinner);
 		spinDay.setOnItemSelectedListener(new OnItemSelectedListener()
 		{
@@ -116,6 +119,20 @@ public class AddLectureHour extends SherlockFragmentActivity {
 		}
 		 
 		}
-		
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    	if(in.hasExtra("fromAddSubid")){
+				Intent intent = new Intent(this, AddSubject.class);
+				startActivity(intent);
+	    	}
+	    	else{
+				Intent intent = new Intent(this, ShowSubjectInfo.class);
+				startActivity(intent);
+	    	}
+	    	return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
 
 }

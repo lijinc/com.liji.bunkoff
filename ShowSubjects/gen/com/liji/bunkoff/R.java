@@ -1409,16 +1409,17 @@ containing a value of this type.
         public static final int activity_data_delete=0x7f03001b;
         public static final int activity_edit_lecture_hours=0x7f03001c;
         public static final int activity_gng_to_class_alert=0x7f03001d;
-        public static final int activity_remove_subject=0x7f03001e;
-        public static final int activity_settings_perf=0x7f03001f;
-        public static final int activity_show_all_bunks=0x7f030020;
-        public static final int activity_show_all_lectures=0x7f030021;
-        public static final int activity_show_subject_info=0x7f030022;
-        public static final int activity_show_subjects=0x7f030023;
-        public static final int fragment_test_frame=0x7f030024;
-        public static final int lecture_row_view=0x7f030025;
-        public static final int sherlock_spinner_dropdown_item=0x7f030026;
-        public static final int sherlock_spinner_item=0x7f030027;
+        public static final int activity_main=0x7f03001e;
+        public static final int activity_remove_subject=0x7f03001f;
+        public static final int activity_settings_perf=0x7f030020;
+        public static final int activity_show_all_bunks=0x7f030021;
+        public static final int activity_show_all_lectures=0x7f030022;
+        public static final int activity_show_subject_info=0x7f030023;
+        public static final int activity_show_subjects=0x7f030024;
+        public static final int fragment_test_frame=0x7f030025;
+        public static final int lecture_row_view=0x7f030026;
+        public static final int sherlock_spinner_dropdown_item=0x7f030027;
+        public static final int sherlock_spinner_item=0x7f030028;
     }
     public static final class menu {
         public static final int activity_add_bunk=0x7f0d0000;
@@ -1505,6 +1506,7 @@ containing a value of this type.
         public static final int title_activity_data_delete=0x7f0b0027;
         public static final int title_activity_edit_lecture_hours=0x7f0b001d;
         public static final int title_activity_gng_to_class_alert=0x7f0b001e;
+        public static final int title_activity_main=0x7f0b0028;
         public static final int title_activity_remove_subject=0x7f0b0014;
         public static final int title_activity_settings=0x7f0b0021;
         public static final int title_activity_settings_perf=0x7f0b0026;

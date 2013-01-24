@@ -27,6 +27,7 @@
             android:name="com.liji.bunkoff.AddSubject"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/title_activity_add_subject"
+            android:noHistory="true"
             android:parentActivityName="com.liji.bunkoff.ShowSubjects" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -54,6 +55,7 @@
         </activity>
         <activity
             android:name="com.liji.bunkoff.AddLectureHour"
+            android:noHistory="true"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/title_activity_add_lecture_hour"
             android:parentActivityName="com.liji.bunkoff.AddSubject" >
@@ -109,6 +111,7 @@
         <activity
             android:name="com.liji.bunkoff.GngToClass"
             android:excludeFromRecents="true"
+            android:noHistory="true"
             android:label="@string/title_activity_gng_to_class_alert"
             android:launchMode="singleInstance"
             android:taskAffinity=""
@@ -125,6 +128,7 @@
         <activity
             android:name="com.liji.bunkoff.AddBunk"
             android:label="@string/title_activity_add_bunk"
+            android:noHistory="true"
             android:parentActivityName="com.lij.bunkoff.BunkIndex" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -153,9 +157,14 @@
         <activity
             android:name="com.liji.bunkoff.DataDeleteActivity"
             android:label="@string/title_activity_data_delete"
+            android:noHistory="true"
             android:launchMode="singleInstance"
             android:taskAffinity=""
             android:theme="@style/Theme.Transparent" >
+        </activity>
+        <activity
+            android:name="com.liji.bunkoff.MainActivity"
+            android:label="@string/title_activity_main" >
         </activity>
     </application>
 
