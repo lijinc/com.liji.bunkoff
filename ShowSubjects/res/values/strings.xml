@@ -38,5 +38,25 @@
     <string name="title_activity_settings_perf">SettingsPerfAct</string>
     <string name="title_activity_data_delete">DataDeleteActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string-array name="time_before_alarm">
+        <item >1 minute</item>
+        <item >2 minutes</item>
+        <item >5 minutes</item>
+        <item >10 minutes</item>
+        <item >15 minutes</item>
+        <item >30 minutes</item>
+        <item >45 minutes</item>
+        <item >60 minutes</item>
+    </string-array>
+    <string-array name="time_val">
+        <item >1</item>
+        <item >2</item>
+        <item >5</item>
+        <item >10</item>
+        <item >15</item>
+        <item >30</item>
+        <item >45</item>
+        <item >60</item>
+    </string-array>
 
 </resources>

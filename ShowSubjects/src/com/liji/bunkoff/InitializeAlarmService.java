@@ -42,6 +42,8 @@ public class InitializeAlarmService extends Service {
 		Calendar realTime = Calendar.getInstance();
 		Calendar alarmTime = Calendar.getInstance();
 		SharedPreferences setPreference=PreferenceManager.getDefaultSharedPreferences(this);
+		String befTime=setPreference.getString("timePref", "5");
+		int bTime=Integer.parseInt(befTime);
 		if(setPreference.getBoolean("checkBoxEnablePref", true)==false){
 			Log.d("stop", " sr");
 			stopSelf();
@@ -117,7 +119,7 @@ public class InitializeAlarmService extends Service {
 				}
 				  
 				alarmTime.set(Calendar.HOUR_OF_DAY, lectureList.get(0).getHour());
-				alarmTime.set(Calendar.MINUTE, lectureList.get(0).getMinute());
+				alarmTime.set(Calendar.MINUTE, (lectureList.get(0).getMinute()-bTime));
 				Intent i = new Intent(this, StartAlarmReceiver.class);
 				Bundle b = new Bundle();
 				b.putParcelable("bunk", new Bunk(lectureList.get(0),realTime.get(Calendar.DAY_OF_MONTH),realTime.get(Calendar.MONTH),realTime.get(Calendar.YEAR)));

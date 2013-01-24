@@ -1,4 +1,6 @@
 int array daysOfWeek 0x7f0c0000
+int array time_before_alarm 0x7f0c0001
+int array time_val 0x7f0c0002
 int attr actionBarDivider 0x7f01002d
 int attr actionBarItemBackground 0x7f01002e
 int attr actionBarSize 0x7f01002c
