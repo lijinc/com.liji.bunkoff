@@ -43,9 +43,11 @@ public class SubjectArrayAdapter extends BaseAdapter {
         TextView title = (TextView) convertView.findViewById(android.R.id.text1);
         TextView subTitle = (TextView) convertView.findViewById(android.R.id.text2); 
         Subject sub = list.get(position);
+        int noBunk=sub.getTotalClass()*(100-sub.getMinAttendence())/100;
         title.setText(" "+sub.getSubjectName());
         dba=new DatabaseHandlerForAttendence(context);
-        subTitle.setText(" Bunks : "+String.valueOf(dba.getBunkCount(sub.getId())));
+        int bunks=dba.getBunkCount(sub.getId());
+        subTitle.setText(" Bunks : "+String.valueOf(bunks)+"("+noBunk+")");
         dba.close();
         return convertView;
 	}
