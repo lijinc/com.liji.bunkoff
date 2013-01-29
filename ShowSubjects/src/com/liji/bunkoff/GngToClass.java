@@ -59,8 +59,18 @@ public class GngToClass extends SherlockFragmentActivity {
 			long[] pattern = { 500, 300 };  
 			vibrator.vibrate(pattern,1);
 		}
-		LectureDialog lecDialogFragment = LectureDialog.newInstance("Are you attending "+sub.getSubjectName()+" hour?","1002");
-        lecDialogFragment.show(getSupportFragmentManager(), "Going");
+		dba=new DatabaseHandlerForAttendence(this);
+        int noBunk=sub.getTotalClass()*(100-sub.getMinAttendence())/100;
+		if(dba.getBunkCount(sub.getId())<noBunk){
+			int toBunk=noBunk-dba.getBunkCount(sub.getId());
+			Log.d("no bunk", String.valueOf(toBunk));
+			LectureDialog lecDialogFragment = LectureDialog.newInstance("Are you attending "+sub.getSubjectName()+" hour? You can bunk "+toBunk+" more classes!!","1002");
+	        lecDialogFragment.show(getSupportFragmentManager(), "Going");
+		}
+		else{
+			LectureDialog lecDialogFragment = LectureDialog.newInstance("Are you attending "+sub.getSubjectName()+" hour? You have attendence shortage its not recommended to bunk this class!!","1002");
+	        lecDialogFragment.show(getSupportFragmentManager(), "Going");
+		}
 	}
 
 
